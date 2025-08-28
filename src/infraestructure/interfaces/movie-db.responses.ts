@@ -6,6 +6,10 @@ export interface NowPlayingResponse {
     total_results: number;
 }
 
+export interface UpcomingResponse extends NowPlayingResponse {}
+export interface TopRatedResponse extends Omit<NowPlayingResponse, 'dates'> {}
+export interface PopularResponse extends Omit<NowPlayingResponse, 'dates'> {}
+
 export interface Dates {
     maximum: string;
     minimum: string;
