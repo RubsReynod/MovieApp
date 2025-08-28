@@ -2,8 +2,8 @@ export interface Movie {
     id: number;
     title: string;
     description: string;
-    releaseDate: string;
+    releaseDate: Date;
     rating: number;
-    poster: string;
-    backdrop: string;
+    poster: string | null;
+    backdrop: string | null;
 }
