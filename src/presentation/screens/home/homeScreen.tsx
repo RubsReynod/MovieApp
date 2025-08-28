@@ -1,12 +1,15 @@
 import React from 'react'
 import { Text, View } from 'react-native'
+import useMovies from '../../hooks/useMovies';
 
-const homeScreen = () => {
+const HomeScreen = () => {
+  const {} = useMovies();
+
   return (
     <View>
-      <Text>homeScreen</Text>
+      <Text>HomeScreen</Text>
     </View>
   )
 }
 
-export default homeScreen
+export default HomeScreen
