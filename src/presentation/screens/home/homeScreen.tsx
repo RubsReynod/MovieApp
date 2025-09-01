@@ -22,7 +22,7 @@ const HomeScreen = () => {
       <View style={{ marginTop: top + 20, paddingBottom: 20 }}>
         <PosterCarrousel movies={nowPlaying} />
 
-        <HorizontalCarrousel movies={popular} title="Popular" />
+        <HorizontalCarrousel movies={popular} title="Popular" loadNextPage={() => console.log('Load more popular')} />
         <HorizontalCarrousel movies={topRated} title="Top Rated" />
         <HorizontalCarrousel movies={upcoming} title="Upcoming" />
       </View>
