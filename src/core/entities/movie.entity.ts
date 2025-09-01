@@ -7,3 +7,12 @@ export interface Movie {
     poster: string | null;
     backdrop: string | null;
 }
+
+
+export interface FullMovie extends Movie {
+    genres: string[];
+    duration: number;
+    budget: number;
+    originalTitle: string;
+    productionCompanies: string[];
+}
