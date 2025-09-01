@@ -7,7 +7,7 @@ import { HorizontalCarrousel } from '../../components/movies/HorizontalCarrousel
 
 const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
-  const { loading, nowPlaying, upcoming, topRated, popular } = useMovies();
+  const { loading, nowPlaying, upcoming, topRated, popular, loadMorePopular } = useMovies();
 
   if (loading) {
     return (
@@ -22,7 +22,7 @@ const HomeScreen = () => {
       <View style={{ marginTop: top + 20, paddingBottom: 20 }}>
         <PosterCarrousel movies={nowPlaying} />
 
-        <HorizontalCarrousel movies={popular} title="Popular" loadNextPage={() => console.log('Load more popular')} />
+        <HorizontalCarrousel movies={popular} title="Popular" loadNextPage={loadMorePopular} />
         <HorizontalCarrousel movies={topRated} title="Top Rated" />
         <HorizontalCarrousel movies={upcoming} title="Upcoming" />
       </View>

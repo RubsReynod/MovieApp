@@ -54,7 +54,7 @@ export const HorizontalCarrousel: FC<Props> = ({ movies, title, loadNextPage }) 
         showsHorizontalScrollIndicator={false}
         data={movies}
         renderItem={({ item }) => <MoviePoster movie={item} width={140} height={200} />}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => `${item.id.toString()}-${index}`}
         onScroll={onScroll}
       />
     </View>

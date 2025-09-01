@@ -3,6 +3,8 @@ import type { Movie } from '../../core/entities/movie.entity';
 import * as useCases from '../../core/use-cases';
 import { movieDBFetch } from '../../config/adapters/movieDB.adapters';
 
+let popularPage = 1;
+
 const useMovies = () => {
     const [nowPlaying, setNowPlaying] = useState<Movie[]>([]);
     const [upcoming, setUpcoming] = useState<Movie[]>([]);
@@ -20,7 +22,7 @@ const useMovies = () => {
             const moviesPromise = useCases.moviesNowPlayingUseCase(movieDBFetch);
             const moviesUpcomingPromise = useCases.moviesUpcomingUseCase(movieDBFetch);
             const moviesTopRatedPromise = useCases.moviesTopRatedUseCase(movieDBFetch);
-            const moviesPopularPromise = useCases.moviesPopularUseCase(movieDBFetch);
+            const moviesPopularPromise = useCases.moviesPopularUseCase(movieDBFetch, { page: popularPage });
 
             const [movies, moviesUpcoming, moviesTopRated, moviesPopular] = await Promise.all([
                 moviesPromise,
@@ -40,6 +42,16 @@ const useMovies = () => {
         }
     }
 
+    const loadMorePopular = async () => {
+        popularPage++;
+        try {
+            const moviesPopular = await useCases.moviesPopularUseCase(movieDBFetch, { page: popularPage });
+            setPopular(prev => [...prev, ...moviesPopular]);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 
     return {
         nowPlaying,
@@ -47,6 +59,7 @@ const useMovies = () => {
         topRated,
         popular,
         loading,
+        loadMorePopular,
     }
 }
 
