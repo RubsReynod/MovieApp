@@ -11,14 +11,14 @@ interface Props {
 export const PosterCarrousel: FC<Props> = ({ movies, height = 440 }: Props) => {
   return (
     <View style={{ height }}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        >
-          {movies.map(movie => (
-            <MoviePoster key={movie.id} movie={movie} />
-          ))}
-        </ScrollView>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
+        {movies.map(movie => (
+          <MoviePoster key={movie.id} movie={movie} />
+        ))}
+      </ScrollView>
     </View>
   )
 }

@@ -25,9 +25,9 @@ const MoviePoster: FC<Props> = ({ movie, height = 420, width = 300 }) => {
         opacity: pressed ? 0.8 : 1,
         width,
         height,
-        marginHorizontal: 10,
+        marginHorizontal: 8,
         paddingBottom: 20,
-        paddingHorizontal: 10,
+        paddingHorizontal: 7,
       })}
     >
       <View style={{ ...styles.imageContainer, width, height }}>
